@@ -14,14 +14,14 @@ Dir.chdir(directory)
 if d == nil
 	puts "Wrong path"
 else
-	d.each do |file|
-		for episode in (1..episode.to_i)
-			episode = "%02d" % episode
-			season = "%02d" % season
-			old_name = File.basename(__FILE__)   #get filename
-			suffix = File.extname(__FILE__)      #get file extension
-			#manage format with season et episode's number
-			File.rename(old_name, "#{serie} S#{season}E#{episode}.#{suffix}")
-		end
-	end
+    d.each do |file|
+        for episode in (1..episode.to_i)
+	    episode = "%02d" % episode
+	    season = "%02d" % season
+            old_name = File.basename(__FILE__)   #get filename
+	    suffix = File.extname(__FILE__)      #get file extension
+	    #manage format with season et episode's number
+	    File.rename(old_name, "#{serie} S#{season}E#{episode}.#{suffix}")
+        end
+    end
 end
