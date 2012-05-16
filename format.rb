@@ -4,10 +4,9 @@ puts "Serie's name ?"
   serie = gets.chomp
 puts "Format: #{serie} Sxx Exx"
 
-d = Dir.new(directory)
 Dir.chdir(directory)
 
-if d == nil
+if Dir.exist?(directory) == false
   puts "Wrong path"
 else
   d.each do |file|
@@ -18,6 +17,6 @@ else
     season = old_name.match(/[sS]\d+/).to_s.match(/\d+/).to_s
     season = "%02d" % season.to_i #Format
     #Must cover more possibilities with regex
-    File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
+    puts File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
   end
 end
