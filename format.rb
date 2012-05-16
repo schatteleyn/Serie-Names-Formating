@@ -6,9 +6,7 @@ puts "Format: #{serie} Sxx Exx"
 
 Dir.chdir(directory)
 
-if Dir.exist?(directory) == false
-  puts "Wrong path"
-else
+if Dir.exist?(directory)
   d.each do |file|
     old_name = File.basename(__FILE__)
     suffix = File.extname(__FILE__)
@@ -19,4 +17,6 @@ else
     #Must cover more possibilities with regex
     puts File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
   end
+else
+  puts "Wrong path"
 end
