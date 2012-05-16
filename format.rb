@@ -6,7 +6,7 @@ puts "Format: #{serie} Sxx Exx"
 
 if Dir.exist?(directory)
   Dir.chdir(directory)
-  files = Dir.entries(Dir.pwd)
+  files = Dir.entries(Dir.pwd).drop(2) # Delete "." and ".." directories
   files.each do |file|
     old_name = File.basename(file)
     suffix = File.extname(file)
@@ -15,7 +15,8 @@ if Dir.exist?(directory)
     season = old_name.match(/[sS]\d+/).to_s.match(/\d+/).to_s
     season = "%02d" % season.to_i #Format
     #Must cover more possibilities with regex
-    puts File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
+    File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
+    puts "#{serie} S#{season}E#{episode}#{suffix}"
   end
 else
   puts "Wrong path"
