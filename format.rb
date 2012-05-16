@@ -4,9 +4,8 @@ puts "Serie's name ?"
   serie = gets.chomp
 puts "Format: #{serie} Sxx Exx"
 
-Dir.chdir(directory)
-
 if Dir.exist?(directory)
+  Dir.chdir(directory)
   d.each do |file|
     old_name = File.basename(__FILE__)
     suffix = File.extname(__FILE__)
