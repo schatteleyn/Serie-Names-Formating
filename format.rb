@@ -13,7 +13,7 @@ if Dir.exist?(directory)
     else
       old_name = File.basename(file)
       suffix = File.extname(file)
-      episode = old_name.match(/[eE]\d+[\-]?\d+/).to_s.match(/\d+[\-]?\d+/).to_s
+      episode = old_name.match(/[eE]\d+[\-eE]?\d+/).to_s.match(/\d+[\-eE]?\d+/).to_s
       episode = "%02d" % episode.to_i #Format the number
       season = old_name.match(/[sS]\d+/).to_s.match(/\d+/).to_s
       season = "%02d" % season.to_i #Format
