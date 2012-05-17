@@ -8,3 +8,7 @@ The script will ask you for the name of the serie and the directory of it, and w
 + Handle errors
 + Handle more case with regex
 + See if I can make it works in several directories in one shot
+
+## IDEA:  ##
++ Instead of asking path, crawling every child directories and asking name when fiding directory with files in it.
++ Add possibilities to ignore a directory
