@@ -6,11 +6,11 @@ puts "Format: #{serie} Sxx Exx"
 
 if Dir.exist?(directory)
   Dir.chdir(directory)
-  files = Dir.entries(Dir.pwd).drop(2) # list all the files
+  files = Dir.entries(Dir.pwd) # list all the files
   files.each do |file|
-   # if /[\.]*.+/.match(file) # Avoid ".", "..", ".DS_Store" and every hidden files
-   # 	next
-   # else
+    if /^[.]+.*/.match(file) # Avoid ".", "..", ".DS_Store" and every hidden files
+    	next
+    else
       old_name = File.basename(file)
       suffix = File.extname(file)
       episode = old_name.match(/[eE]\d+[\-eE]?\d+/).to_s.match(/\d+[\-eE]?\d+/).to_s
@@ -20,7 +20,7 @@ if Dir.exist?(directory)
       #Must cover more possibilities with regex
       File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
       puts "#{serie} S#{season}E#{episode}#{suffix}"
-   # end
+    end
   end
 else
   puts "Wrong path"
