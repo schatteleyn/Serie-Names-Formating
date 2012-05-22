@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 puts "Directory ?"
   directory = gets.chomp
 puts "Serie's name ?"
