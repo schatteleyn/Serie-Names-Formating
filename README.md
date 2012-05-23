@@ -6,13 +6,8 @@ The script will ask you for the name of the serie and the directory of it, and w
 
 ## Format  ##
 + S01E01/s01e01
++ SO1E23-24 (and other separators)
 + 01x01
 
 ## TO-DO: ##
 + See if I can make it works in several directories in one shot
-
-IDEA:
------
-
-+ Instead of asking path, crawling every child directories and asking name when fiding directory with files in it.
-+ Add possibilities to ignore a directory

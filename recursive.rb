@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 $LOAD_PATH << File.dirname(__FILE__)
 require 'format.rb'
+require 'find'
 
-dir.each do |file|
-  if File.exist?(file) # Si true, le fichier est un répertoire
-    # Ouvrir le répertoire, recommencer
-   else
-     # affichage du chemin, demander nom série, lancer le script
+Find.find('./') do |f|
+  if Dir.exist?(f) == false
+    path = Dir.pwd
+    format(path)
+    f.prune
   end
 end
