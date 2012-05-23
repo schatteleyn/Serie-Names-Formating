@@ -17,15 +17,14 @@ if Dir.exist?(directory)
       suffix = File.extname(file)
       if old_name.match(/\d+[x]\d+/)
         w = old_name.match(/\d+[x]\d+/).to_s
-        season =
-        episode =
+        season = w.match(/^\d{1,2}/).to_s
+        episode = w.match(/\d{1,2}$/).to_s
       else
         episode = old_name.match(/[eE]\d+[\-eE]?\d+/).to_s.match(/\d+[\-eE]?\d+/).to_s
-        episode = "%02d" % episode.to_i #Format the number
         season = old_name.match(/[sS]\d+/).to_s.match(/\d+/).to_s
-        season = "%02d" % season.to_i #Format
-        #Must cover more possibilities with regex
       end
+      episode = "%02d" % episode.to_i #Format
+      season = "%02d" % season.to_i #Format
       File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
       puts "#{old_name}.#{suffix} is now named:"
       puts "    #{serie} S#{season}E#{episode}#{suffix}"
