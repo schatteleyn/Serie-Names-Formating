@@ -6,7 +6,7 @@ The script will ask you for the name of the serie and the directory of it, and w
 
 ## Format  ##
 + S01E01/s01e01
-+ SO1E23-24 (and other separators)
++ S01E23-24 (and other separators)
 + 01x01
 
 ## TO-DO: ##
