@@ -3,7 +3,7 @@
 require 'find'
 
 Find.find('./') do |f|
-  if !Dir.exist?(f)
+  if !Dir.exist?(f) && f[2] != "." # don't stop on .DS_Store
     path = Dir.pwd + f[1..-1] # get full path, removing the "."
     format(path)
   end
