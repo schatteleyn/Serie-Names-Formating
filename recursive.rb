@@ -2,24 +2,18 @@
 
 require 'find'
 
-Find.find('./') do |f|
-  if !Dir.exist?(f) && f[2] != "." # don't stop on .DS_Store
-    path = Dir.pwd + f[1..-1] # get full path, removing the "."
-    format(path)
-  end
-end
 
 def format(directory)
   puts directory
   puts "Serie's name ?"
-    serie = gets.chomp
+  serie = gets.chomp
   puts "Format: #{serie} Sxx Exx"
 
   if Dir.exist?(directory)
     Dir.chdir(directory)
     files = Dir.entries(Dir.pwd) # list all the files
     files.each do |file|
-      if /^[.]+.*/.match(file) # Avoid ".", "..", ".DS_Store" and every hidden files
+      if /^[.]+.*/.match(file) || Dir.exists?(file) # Avoid ".", "..", ".DS_Store" and every hidden files
         next
       else
         old_name = File.basename(file)
@@ -36,10 +30,18 @@ def format(directory)
         season = "%02d" % season.to_i #Format
         File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
         puts "#{old_name} is now named:"
-        puts "    #{serie} S#{season}E#{episode}#{suffix}"
+        puts "#{serie} S#{season}E#{episode}#{suffix}"
       end
     end
   else
-    puts "Wrong path"
+  	puts "Wrong path"
+  end
+end
+
+Find.find('./') do |f|
+  if Dir.exist?(f) && f != "./"
+    path = Dir.pwd + f[1..-1] # get full path, removing the "."
+    format(path)
+    Dir.chdir('../')
   end
 end
