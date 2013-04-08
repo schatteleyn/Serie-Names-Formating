@@ -23,11 +23,14 @@ if Dir.exist?(directory)
         episode = old_name.match(/[eE]\d+[\-eE]?\d+/).to_s.match(/\d+[\-eE]?\d+/).to_s
         season = old_name.match(/[sS]\d+/).to_s.match(/\d+/).to_s
       end
-      episode = "%02d" % episode.to_i #Format
-      season = "%02d" % season.to_i #Format
+      episode = "%02d" % episode #Format
+      season = "%02d" % season #Format
+      if season == "00" && episode == "00"
+	next
+      end
       File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
       puts "#{old_name} is now named:"
-      puts "    #{serie} S#{season}E#{episode}#{suffix}"
+      puts "#{serie} S#{season}E#{episode}#{suffix}"
     end
   end
 else
