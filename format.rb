@@ -25,7 +25,7 @@ if Dir.exist?(directory)
       end
       episode = "%02d" % episode.to_i #Format
       season = "%02d" % season.to_i #Format
-      if season == "00" && episode == "00"
+      if episode == "00"
 	next
       end
       File.rename(old_name, "#{serie} S#{season}E#{episode}#{suffix}")
