@@ -2,7 +2,10 @@ Serie Names Formatting
 ======================
 
 Little script in Ruby to format the title of the files of your series.
-The script will ask you for the name of the serie and the directory of it, and will then rename the files.
+The script will ask you for the name of the serie and the directory of it, and will then rename the files. Alternatively, you can also pass them as arguments in the your terminal, as follow:  
+./format.rb path/to/the/serie "name of the serie"  
+(surround by double quotes if there is space)  
+
 The recursive.rb file allows you to format a whole directory of directories. But for now, you can only have one directory of depth.  
 More clearly:
 You put recursive.rb in your Serie directory.
